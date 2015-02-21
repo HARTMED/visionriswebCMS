@@ -1,0 +1,23 @@
+
+create Table installs(
+install_id INT NOT NULL IDENTITY(12485, 1) PRIMARY KEY,
+install_date dateTime NOT NULL,
+client_name varchar(200) NOT NULL,
+server_ram float NULL,
+server_hd float NULL,
+bin_tech_fullname varchar(200) NULL,
+local_tech_fullname varchar(200) NULL,
+local_tech_contact varchar(200) NULL,
+main_radiolog_fullname varchar(200) NULL,
+main_radiolog_contact varchar(200) NULL,
+install_wanted_funcs varchar(200) NULL,
+install_city varchar(max) NULL,
+install_country varchar(200) NULL,
+install_active_version varchar(200) NULL,
+install_first_version varchar(200)  NULL,
+active_problems varchar(max) NULL,
+recom_solutions varchar(max) NULL,
+oper_status varchar(200) NULL,
+server_bandwidth float NULL,
+install_url varchar(1000) NULL,
+com_taken numeric(1) NULL)
