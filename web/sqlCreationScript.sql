@@ -5,7 +5,7 @@ GO
 IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[installs]') AND type in (N'U'))
 BEGIN
 CREATE TABLE [dbo].[installs](
-	[install_id] [int] IDENTITY(12485,1) NOT NULL,
+	[install_id] [int] IDENTITY(1,1) NOT NULL,
 	[install_date] [datetime] NOT NULL,
 	[client_name] [varchar](200) NOT NULL,
 	[server_ram] [float] NULL,
