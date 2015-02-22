@@ -19,7 +19,7 @@ import visionriswebCMS.model.dao.daoInstalls;
  */
 @ManagedBean(name = "installs", eager = true)
 @SessionScoped
-public class InstallsBean {
+public class InstallsBean implements java.io.Serializable{
 
     private ArrayList<Installs> listInstalls;
     private ArrayList<Installs> filteredInstalls;
@@ -36,6 +36,11 @@ public class InstallsBean {
        
     }
 
+    
+     public void refreshDatatable() {
+        listInstalls=dao.getAllInstalls();
+       
+    }
     public void setDao(daoInstalls dao) {
         this.dao = dao;
     }
