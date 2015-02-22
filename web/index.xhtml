@@ -2,19 +2,117 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>VisionRIS Web CMS</title>
+        <h:outputStylesheet name ="css/wr_datatable.css"/>
     </h:head>
     <h:body>
         <h:form prependId="false">
             <p:toolbar>
                 <p:toolbarGroup>
-                    <p:outputLabel value="#{installs.text}"/>
+
                     <p:separator></p:separator>
 
                 </p:toolbarGroup>
             </p:toolbar>
+
+            <p:dataTable id="tabexam"
+                         value="#{installs.listInstalls}"
+                         draggableColumns="true"
+                         resizableColumns="true"
+                         var="listInstalls"
+                         liveResize="true"
+                         styleClass="wr_datatable"
+                         emptyMessage="No results were found with given criteria"
+                         widgetVar="installsTable"
+                         filteredValue="#{installs.filteredInstalls}"
+                         >
+
+                <!--  
+               <f:facet name="header">
+            <p:outputPanel>
+                <h:outputText value="Search all fields:" />
+                <p:inputText id="globalFilter" onkeyup="PF('installsTable').filter()" style="width:150px" />
+            </p:outputPanel> 
+                </f:facet>
+                -->
+
+                <p:column headerText="ID"
+                          width="10"
+                          resizable="false">
+                    <h:outputText value="#{listInstalls.installId}" styleClass="fonty"/>
+                </p:column>
+                <p:column headerText="Client name"
+                          width="80"
+                          resizable="true">
+                    <h:outputText value="#{listInstalls.clientName}" styleClass="fonty"/>
+                </p:column>
+                <p:column headerText="Install Date"
+                          width="80">
+                    <h:outputText value="#{listInstalls.installDate}" styleClass="fonty">
+                        <f:convertDateTime pattern="dd/MMyyyy HH:mm"/>
+                    </h:outputText>
+                </p:column>
+                <p:column headerText="Status" styleClass="#{listInstalls.operStatus.replaceAll(' ', '_')} wrap">                 
+                    <h:outputText value="#{listInstalls.operStatus}" styleClass="fonty"/>
+                </p:column>
+                <p:column headerText="install Url"
+                          styleClass="wrap"
+                          width="80"> 
+                    <h:outputText value="#{listInstalls.installUrl}" styleClass="fonty wrap"/>
+                    <h:outputLink value="#{listInstalls.installUrl}" target="_blank"
+                                  styleClass="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
+                        <span class="ui-button-text" style="font-size: 11px;">Visit</span>
+                    </h:outputLink>
+
+
+                </p:column>
+                <p:column headerText="Server"
+                          width="80">                 
+                    <h:outputText value="Debit : " style="font-weight: bold; font-size: 12px;"/> <h:outputText value="#{listInstalls.serverBandwidth} MB/s" styleClass="fonty"/><br></br>
+                    <h:outputText value="RAM : " style="font-weight: bold;font-size: 12px;"/> <h:outputText value="#{listInstalls.serverRam} MB" styleClass="fonty"/><br></br>
+                    <h:outputText value="HDD : " style="font-weight: bold;font-size: 12px;"/> <h:outputText value="#{listInstalls.serverHd} GB" styleClass="fonty"/><br></br>
+                </p:column>
+                <p:column headerText="Active problems" styleClass="fonty wrap">                 
+                    <h:outputText value="#{listInstalls.activeProblems}" style="font-size: 12px; text-align: left;vertical-align: text-top;" />
+                </p:column>
+                <p:column headerText="Reco. solutions" styleClass="fonty wrap">                 
+                    <h:outputText value="#{listInstalls.recomSolutions}" style="font-size: 12px; text-align: left; vertical-align: text-top;" />
+                </p:column>
+                <p:column headerText="Version" width="80">                 
+                     <h:outputText value="First Version :" style="font-weight: bold; font-size: 12px;"/><br></br><h:outputText value="#{listInstalls.installFirstVersion}" style="text-align: center!important;font-size: 14px;font-weight: bold;"/><br></br>
+                     <h:outputText value="Active Version :" style=" font-weight: bold; font-size: 12px;"/><br></br><h:outputText value="#{listInstalls.installActiveVersion}" style="text-align: center!important;font-size: 14px;color: green; font-weight: bold;"/>
+                </p:column>          
+
+                <p:column headerText="Location" styleClass="fonty wrap">                 
+                    <h:outputText value="#{listInstalls.installCity}, #{listInstalls.installCountry}" styleClass="fonty"/>
+                </p:column>
+
+                <p:column headerText="M.Radiolog" styleClass="fonty wrap">                 
+                    <h:outputText value="#{listInstalls.mainRadiologFullname}" styleClass="fonty"/><br></br>
+                    <h:outputText value="#{listInstalls.mainRadiologContact}" styleClass="fonty"/>
+                </p:column>
+
+                <p:column headerText="Bin Tech." styleClass="fonty wrap">                 
+                    <h:outputText value="#{listInstalls.binTechFullname}" styleClass="fonty"/>
+                </p:column>
+                <p:column headerText="Local Tech." styleClass="fonty wrap">                 
+                    <h:outputText value="#{listInstalls.localTechFullname}" styleClass="fonty"/><br></br>
+                    <h:outputText value="#{listInstalls.localTechContact}" styleClass="fonty"/>
+                </p:column>
+                <p:column headerText="Wanted Funcs" styleClass="fonty wrap">                 
+                    <h:outputText value="#{listInstalls.installWantedFuncs}" styleClass="fonty"/><br></br>
+                    <h:outputText value="#{listInstalls.installWantedFuncs}" styleClass="fonty"/>
+                </p:column>
+                <p:column headerText="Com. Taken">                 
+                    <h:outputText value="#{listInstalls.comTaken?'YES':'NO'}" styleClass="fonty"/>
+
+                </p:column>
+
+            </p:dataTable>
+
         </h:form>
     </h:body>
 </html>

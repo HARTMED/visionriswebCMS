@@ -20,7 +20,7 @@ public class daoInstalls {
     public daoInstalls() {
     }
 
-    public static ArrayList<Installs> getAllInstalls() {
+    public ArrayList<Installs> getAllInstalls() {
         try {
 
             SessionFactory ses = NewHibernateUtil.getSessionFactory();

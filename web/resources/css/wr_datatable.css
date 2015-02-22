@@ -1,0 +1,88 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Aug 30, 2014, 4:16:53 PM
+    Author     : Jalal Sordo
+*/
+/*
+.ui-droppable{
+     border-style: none!important;
+}
+*/
+
+.wr_datatable.ui-datatable tbody td{
+    text-align: left!important;
+
+
+}
+
+.wr_datatable.ui-datatable thead th{
+
+    text-align: left!important;
+    height:10px!important;
+    font-size:11px!important;
+
+
+
+}
+.wr_datatable.ui-datatable tbody td.wrap {
+    white-space: normal;
+}
+
+.wr_datatable.ui-datatable .ui-paginator {
+    padding: 2px;
+    text-align: left;
+    width: auto;
+    margin-top:-1px;
+    margin-left:-1px;
+
+}
+
+
+
+
+.fonty
+{
+    font-size:11px!important;
+    font-family: sans-serif!important;
+    text-align:left!important;
+
+}
+.imagero {
+    vertical-align: middle!important;
+}
+
+
+
+
+.WORKING_AND_UPDATED{
+    font-size: 14px;
+    font-weight: bold;
+    background-color: green;
+}
+.WORKING_NEEDS_UPDATE{
+    font-size: 14px;
+    font-weight: bold;
+    background-color: yellowgreen;
+}
+.INSTALLED{
+    font-size: 14px;
+    font-weight: bold;
+    background-color: yellow;
+}
+.HAS_PROBLEMS{
+    font-size: 14px;
+    font-weight: bold;
+    background-color: orange;
+}
+.SERVER_STOPPED{
+    font-size: 14px;
+    font-weight: bold;
+    background-color: red;
+}
+
+
+
