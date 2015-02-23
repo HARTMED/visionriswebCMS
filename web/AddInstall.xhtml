@@ -1,0 +1,112 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:body>
+        <ui:composition>  
+
+
+            <p:dialog id="over_scheduler"
+                      widgetVar="addInstall" 
+                      resizable="false"
+                      closable="true"
+                      draggable="false"
+                      header="Add Install Wizard"
+                      dynamic="false"
+                      modal="true"
+                      height="480"
+                      width="auto">
+                <h:form>
+
+                    <p:growl id="growl" sticky="true" showDetail="true"/>
+
+
+                    <p:wizard flowListener="#{addInstallBean.onFlowProcess}">
+                        <p:tab id="personal" title="Personal">
+                            <p:panel header="Client Details">
+                                <p:messages />
+                                <h:panelGrid columns="2" columnClasses="label, value">
+                                    <h:outputText value="Name  *" />
+                                    <p:inputText value="#{addInstallBean.inst.clientName}"/>
+
+                                    <h:outputText value="Install Date *" />
+                                    <p:calendar value="#{addInstallBean.inst.installDate}" />
+
+                                    <h:outputText value="Country " />
+                                    <p:inputText value="#{addInstallBean.inst.installCountry}"  />
+
+                                    <h:outputText value="City " />
+                                    <p:inputText value="#{addInstallBean.inst.installCity}"  />
+
+                                    <h:outputText value="operStatus " />
+                                    <p:inputText value="#{addInstallBean.inst.operStatus}"  />
+
+                                    <h:outputText value="installUrl " />
+                                    <p:inputText value="#{addInstallBean.inst.installUrl}"  />
+
+                                    <h:outputText value="installActiveVersion " />
+                                    <p:inputText value="#{addInstallBean.inst.installActiveVersion}"  />
+
+                                    <h:outputText value="installFirstVersion " />
+                                    <p:inputText value="#{addInstallBean.inst.installFirstVersion}"  />
+
+                                    <h:outputText value="Skip to last: " />
+                                    <h:selectBooleanCheckbox value="#{addInstallBean.skip}" />
+                                </h:panelGrid>
+                            </p:panel>
+                        </p:tab>
+
+                        <p:tab id="address" title="Server">
+                            <p:panel header="Server Details">
+                                <p:messages />
+                                <h:panelGrid columns="2" columnClasses="label, value">
+                                    <h:outputText value="Hard Disk(GB)" />
+                                    <p:inputText value="#{addInstallBean.inst.serverHd}" />
+
+                                    <h:outputText value="RAM(MB)" />
+                                    <p:inputText value="#{addInstallBean.inst.serverRam}" />
+
+                                    <h:outputText value="Bandwidth(MB)" />
+                                    <p:inputText value="#{addInstallBean.inst.serverBandwidth}" />
+
+                                    <h:outputText value="Skip to last: " />
+                                    <h:selectBooleanCheckbox value="#{addInstallBean.skip}" />
+                                </h:panelGrid>
+                            </p:panel>
+                        </p:tab>
+
+                        <p:tab id="contact" title="Contact">
+                            <p:panel header="Contact Information">
+                                <p:messages />
+                                <h:panelGrid columns="2" columnClasses="label, value">
+
+                                    <h:outputText value="binTechFullname " />
+                                    <p:inputText value="#{addInstallBean.inst.binTechFullname}"  />
+
+                                    <h:outputText value="localTechFullname " />
+                                    <p:inputText value="#{addInstallBean.inst.localTechFullname}"  />
+                                    <h:outputText value="localTechContact " />
+                                    <p:inputText value="#{addInstallBean.inst.localTechContact}"  />
+                                    <h:outputText value="mainRadiologFullname " />
+                                    <p:inputText value="#{addInstallBean.inst.mainRadiologFullname}"  />
+                                    <h:outputText value="mainRadiologContact " />
+                                    <p:inputText value="#{addInstallBean.inst.mainRadiologContact}"  />
+
+                                    <p:commandButton value="Submit" actionListener="#{addInstallBean.addInstall()}" update="growl" process="@this"/>
+
+                                </h:panelGrid>
+                            </p:panel>
+                        </p:tab>
+
+
+                    </p:wizard>
+
+                </h:form>
+
+
+            </p:dialog>
+        </ui:composition>
+    </h:body>
+
+
+</html>
