@@ -15,7 +15,7 @@ import org.hibernate.SessionFactory;
  *
  * @author admin
  */
-public class NewHibernateUtil {
+public class NewHibernateUtil implements java.io.Serializable{
 
     private static final SessionFactory sessionFactory;
     
