@@ -26,6 +26,7 @@ import javax.faces.event.PhaseEvent;
 import javax.faces.event.PhaseId;
 import org.hibernate.criterion.Restrictions;
 import visionriswebCMS.model.bo.Authentification;
+import visionriswebCMS.model.dao.daoAuthentification;
 import visionriswebCMS.model.util.NewHibernateUtil;
  
 /**
@@ -66,9 +67,9 @@ public class AuthentificationBean implements Serializable{
     
     private boolean login(){
         @SuppressWarnings("static-access")
-        Authentification u=(Authentification)FacesContext.getCurrentInstance().getCurrentInstance().getExternalContext().getSessionMap().get("user");
+        daoAuthentification u=(daoAuthentification)FacesContext.getCurrentInstance().getCurrentInstance().getExternalContext().getSessionMap().get("user");
         if(u !=null){
-            if(u.isLogged())
+            if(u.isLogged(null))
                 return true;
             return false;
         }
@@ -76,6 +77,7 @@ public class AuthentificationBean implements Serializable{
     }
      
     public void afterPhase(PhaseEvent event){
+       
       if(event.getPhaseId()==PhaseId.RESTORE_VIEW){
           FacesContext fc = event.getFacesContext();
           boolean loginPage =fc.getViewRoot().getViewId().lastIndexOf("utilisateur") > -1 ? true : false; 
@@ -85,26 +87,17 @@ public class AuthentificationBean implements Serializable{
       }
       }
   }
-    public boolean isLogged(Authentification log){
-       
-        this.s=NewHibernateUtil.getSessionFactory().openSession();
-        if(log.getUtilisateur()==null || log.getPassword()== null)
-        return false;
-        Transaction t=this.s.beginTransaction();
-        Authentification buff=(Authentification) this.s.createCriteria(Authentification.class)
-                .add(Restrictions.eq("utilisateur",log.getUtilisateur()))
-                .add(Restrictions.eq("password",log.getPassword()))
-                .setMaxResults(1)
-                .uniqueResult();
-      t.commit();
-      this.s.close();
-      if(buff == null){
-          return false;
-      }
-      else
-      {
-          return true;
-      }
-    }
-   
+  
+//public   String login(){
+//    	if("concretepage".equalsIgnoreCase(utilisateur) && "concretepage".equalsIgnoreCase(password)) {
+//    		message ="Successfully logged-in.";
+//    		return "success";
+//    	} else {
+//    		message ="Wrong credentials.";
+//    		return "login";
+//    	}
+//    }
+//    
+     
+
 }
