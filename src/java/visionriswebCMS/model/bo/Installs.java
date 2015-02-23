@@ -4,6 +4,8 @@ package visionriswebCMS.model.bo;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -73,7 +75,7 @@ public class Installs implements java.io.Serializable {
     }
 
     @Id
-
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "install_id", unique = true, nullable = false)
     public int getInstallId() {
         return this.installId;
@@ -230,27 +232,27 @@ public class Installs implements java.io.Serializable {
 
     @Column(name = "oper_status", length = 200)
     public String getOperStatus() {
-        String result = null;
-        System.out.println(operStatus);
-        switch (operStatus) {
-            case "0":
-                result = "WORKING AND UPDATED";
-                break;
-            case "1":
-                result = "WORKING NEEDS UPDATE";
-                break;
-            case "2":
-                result = "INSTALLED";
-                break;
-            case "3":
-                result = "HAS PROBLEMS";
-                break;
-            case "4":
-                result = "SERVER STOPPED";
-                break;
+        String result = "WORKING AND UPDATED";
+        if (operStatus != null) {
+            switch (operStatus) {
+                case "0":
+                    result = "WORKING AND UPDATED";
+                    break;
+                case "1":
+                    result = "WORKING NEEDS UPDATE";
+                    break;
+                case "2":
+                    result = "INSTALLED";
+                    break;
+                case "3":
+                    result = "HAS PROBLEMS";
+                    break;
+                case "4":
+                    result = "SERVER STOPPED";
+                    break;
 
+            }
         }
-
         return result;
     }
 
