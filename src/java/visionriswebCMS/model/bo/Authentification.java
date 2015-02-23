@@ -6,6 +6,10 @@
 
 package visionriswebCMS.model.bo;
 
+import javax.faces.application.NavigationHandler;
+import javax.faces.context.FacesContext;
+import javax.faces.event.PhaseEvent;
+import javax.faces.event.PhaseId;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -13,6 +17,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import org.hibernate.Transaction;
+import org.hibernate.classic.Session;
+import org.hibernate.criterion.Restrictions;
+import visionriswebCMS.model.util.NewHibernateUtil;
 
 
 @Entity
@@ -25,7 +33,7 @@ public class Authentification implements java.io.Serializable{
      private int id;
      private String utilisateur;
      private String password;
-
+      private String message;
       @Id 
     @Column(name="Id", unique=true, nullable=false)
     public int getId() {
@@ -61,10 +69,9 @@ public class Authentification implements java.io.Serializable{
         this.id = id;
         this.utilisateur = utilisateur;
         this.password = password;
+    
     }
-
-     
-     
+  
      
     public Authentification() {
     }
