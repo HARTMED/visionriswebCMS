@@ -230,7 +230,7 @@ public class Installs implements java.io.Serializable {
 
     @Column(name = "oper_status", length = 200)
     public String getOperStatus() {
-        String result = null;
+        String result = "WORKING AND UPDATED";
         System.out.println(operStatus);
         switch (operStatus) {
             case "0":
